@@ -8,7 +8,8 @@ export const App = () => {
 
   const clearQuery = query.toLowerCase().trim();
 
-  const movieVision = [...moviesFromServer].filter(movie =>
+  const visibleMovies = moviesFromServer.filter(
+    movie =>
       movie.title.toLowerCase().includes(clearQuery) ||
       movie.description.toLowerCase().includes(clearQuery),
   );
@@ -28,7 +29,7 @@ export const App = () => {
             <div className="control">
               <input
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={event => setQuery(event.target.value)}
                 type="text"
                 id="search-query"
                 className="input"
@@ -38,7 +39,7 @@ export const App = () => {
           </div>
         </div>
 
-        <MoviesList movies={movieVision} />
+        <MoviesList movies={visibleMovies} />
       </div>
 
       <div className="sidebar">Sidebar goes here</div>
@@ -79,4 +80,3 @@ export const App = () => {
 //     <div className="sidebar">Sidebar goes here</div>
 //   </div>
 // );
-
